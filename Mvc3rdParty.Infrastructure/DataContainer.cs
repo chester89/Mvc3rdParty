@@ -10,11 +10,11 @@ namespace Mvc3rdParty.Infrastructure
     {
         public DataContainer()
         {
-            Configure(cfg => cfg.Scan(asc =>
+            Configure(cfg => cfg.Scan(scanner =>
                                                {
-                                                   asc.WithDefaultConventions();
-                                                   asc.TheCallingAssembly();
-                                                   asc.LookForRegistries();
+                                                   scanner.WithDefaultConventions();
+                                                   scanner.TheCallingAssembly();
+                                                   scanner.LookForRegistries();
                                                }));
         }
     }

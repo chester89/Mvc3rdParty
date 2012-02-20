@@ -18,7 +18,7 @@ namespace Mvc3rdParty.Infrastructure
 
         public object GetService(Type serviceType)
         {
-            return container.GetInstance(serviceType);
+            return container.TryGetInstance(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType)

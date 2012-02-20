@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Foundation\IRepository.cs" />
+    <Compile Include="Foundation\NhRepositoryBase.cs" />
     <Compile Include="Mappings\StockMap.cs" />
     <Compile Include="Mappings\StockMarketMap.cs" />
     <Compile Include="NhConfigurationHelper.cs" />
