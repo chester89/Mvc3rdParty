@@ -58,6 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conventions\CustomCascadeConvention.cs" />
+    <Compile Include="Conventions\CustomFKConvention.cs" />
+    <Compile Include="Conventions\CustomIdConvention.cs" />
+    <Compile Include="Conventions\CustomManyToManyConvention.cs" />
     <Compile Include="Foundation\NhRepositoryBase.cs" />
     <Compile Include="Mappings\StockMap.cs" />
     <Compile Include="Mappings\StockMarketMap.cs" />

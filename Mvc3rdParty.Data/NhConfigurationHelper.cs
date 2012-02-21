@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using Mvc3rdParty.Data.Conventions;
 using Mvc3rdParty.Data.Mappings;
 using NHibernate;
 using NHibernate.Cfg;
@@ -24,7 +25,7 @@ namespace Mvc3rdParty.Data
                     MsSqlConfiguration.MsSql2008.ConnectionString(
                         builder => builder.FromConnectionStringWithKey("testDb")))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<StockMap>()
-                /*.Conventions.AddFromAssemblyOf<IdConvention>()*/);
+                .Conventions.AddFromAssemblyOf<CustomIdConvention>());
         }
 
         public static ISessionFactory CreateSessionFactory()
