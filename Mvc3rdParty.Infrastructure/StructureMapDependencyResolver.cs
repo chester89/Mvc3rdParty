@@ -18,7 +18,11 @@ namespace Mvc3rdParty.Infrastructure
 
         public object GetService(Type serviceType)
         {
-            return container.TryGetInstance(serviceType);
+            if (serviceType.IsAbstract || serviceType.IsInterface)
+            {
+                return container.TryGetInstance(serviceType);
+            }
+            return container.GetInstance(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType)

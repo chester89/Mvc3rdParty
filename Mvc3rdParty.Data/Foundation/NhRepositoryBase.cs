@@ -1,19 +1,20 @@
 using System;
 using System.Linq;
+using Mvc3rdParty.Core;
 using NHibernate;
 using NHibernate.Linq;
 using NHibernate.Tool.hbm2ddl;
 
 namespace Mvc3rdParty.Data.Foundation
 {
-    public abstract class NhRepositoryBase<T>: IRepository<T, int> where T : class
+    public abstract class NhRepositoryBase<T>: IRepository<T> where T : class
     {
         protected readonly ISession Session;
         protected static bool autoCreateDb;
 
         static NhRepositoryBase()
         {
-            autoCreateDb = true;
+            autoCreateDb = false;
 
             if (autoCreateDb)
             {

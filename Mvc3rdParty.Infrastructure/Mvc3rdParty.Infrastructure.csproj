@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mvc3rdParty.Core\Mvc3rdParty.Core.csproj">
+      <Project>{63B51C83-09F9-4586-8325-D6896C8E3B83}</Project>
+      <Name>Mvc3rdParty.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mvc3rdParty.Data\Mvc3rdParty.Data.csproj">
       <Project>{E5CD49CC-6D08-4F2B-8D29-CAB84AAC1AB8}</Project>
       <Name>Mvc3rdParty.Data</Name>

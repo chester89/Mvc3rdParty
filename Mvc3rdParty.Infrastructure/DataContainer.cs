@@ -14,6 +14,7 @@ namespace Mvc3rdParty.Infrastructure
                                                {
                                                    scanner.WithDefaultConventions();
                                                    scanner.TheCallingAssembly();
+                                                   scanner.AssembliesFromApplicationBaseDirectory();
                                                    scanner.LookForRegistries();
                                                }));
         }
