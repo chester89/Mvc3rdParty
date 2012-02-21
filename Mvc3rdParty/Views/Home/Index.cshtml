@@ -1,0 +1,16 @@
+﻿@model Mvc3rdParty.Web.Models.ListModel
+
+@{
+    View.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@foreach(var item in Model.Stocks)
+{
+    @item.Id
+    @item.Name
+    @item.Ticker
+}
+
