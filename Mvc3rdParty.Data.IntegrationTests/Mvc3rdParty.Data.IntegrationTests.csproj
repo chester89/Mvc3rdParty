@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{63B51C83-09F9-4586-8325-D6896C8E3B83}</ProjectGuid>
+    <ProjectGuid>{9771DC61-AA07-4EA5-ADBF-8F49AD97F2F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mvc3rdParty.Core</RootNamespace>
-    <AssemblyName>Mvc3rdParty.Core</AssemblyName>
+    <RootNamespace>Mvc3rdParty.Data.IntegrationTests</RootNamespace>
+    <AssemblyName>Mvc3rdParty.Data.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Mvc3rdParty\</SolutionDir>
@@ -33,17 +33,51 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.2.0.712\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.0.1566\lib\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.0.1566\lib\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Stock.cs" />
-    <Compile Include="Entities\StockMarket.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="DbTestEqualityComparer.cs" />
+    <Compile Include="Mapping\MappingTestBase.cs" />
+    <Compile Include="Mapping\StockMapTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\" />
+    <ProjectReference Include="..\Mvc3rdParty.Core\Mvc3rdParty.Core.csproj">
+      <Project>{63B51C83-09F9-4586-8325-D6896C8E3B83}</Project>
+      <Name>Mvc3rdParty.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mvc3rdParty.Data\Mvc3rdParty.Data.csproj">
+      <Project>{E5CD49CC-6D08-4F2B-8D29-CAB84AAC1AB8}</Project>
+      <Name>Mvc3rdParty.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
