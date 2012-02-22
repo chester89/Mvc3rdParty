@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using StructureMap;
+using StructureMap.Pipeline;
 
 namespace Mvc3rdParty.Infrastructure
 {
@@ -28,6 +29,11 @@ namespace Mvc3rdParty.Infrastructure
         public IEnumerable<object> GetServices(Type serviceType)
         {
             return container.GetAllInstances<object>().Where(s => s.GetType() == serviceType);
+        }
+
+        public void DisposeofHttpCachedObjects()
+        {
+            HttpContextLifecycle.DisposeAndClearAll();
         }
     }
 }

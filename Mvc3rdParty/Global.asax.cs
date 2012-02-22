@@ -38,5 +38,11 @@ namespace Mvc3rdParty.Web
                                                                      cfg.ValidatorFactory = new StructureMapValidatorFactory();
                                                                  });
         }
+
+        protected void Application_EndRequest()
+        {
+            dynamic resolver = DependencyResolver.Current;
+            resolver.DisposeofHttpCachedObjects();
+        }
     }
 }
