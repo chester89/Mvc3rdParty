@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FluentValidation.Mvc;
 using Mvc3rdParty.Infrastructure;
 
 namespace Mvc3rdParty.Web
@@ -31,6 +32,11 @@ namespace Mvc3rdParty.Web
             DependencyResolver.SetResolver(new StructureMapDependencyResolver());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            FluentValidationModelValidatorProvider.Configure(cfg =>
+                                                                 {
+                                                                     cfg.ValidatorFactory = new StructureMapValidatorFactory();
+                                                                 });
         }
     }
 }
