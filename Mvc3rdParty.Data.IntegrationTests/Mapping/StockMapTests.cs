@@ -10,7 +10,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         [Fact]
         public void CanCorrectlyMapStock()
         {
-            GetSpec()
+            Specification
                 .CheckProperty(s => s.Name, "Facebook")
                 .CheckProperty(s => s.Ticker, "FB");
         }
@@ -21,7 +21,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         [Fact]
         public void CanCorrectlyMapStockMarket()
         {
-            GetSpec()
+            Specification
                 .CheckProperty(sm => sm.Location, "New York")
                 .CheckList(sm => sm.StocksTraded, new List<Stock>());
         }

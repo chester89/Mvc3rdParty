@@ -45,9 +45,9 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
             }
         }
 
-        protected PersistenceSpecification<T> GetSpec()
+        protected PersistenceSpecification<T> Specification
         {
-            return new PersistenceSpecification<T>(session, new DbTestEqualityComparer());
+            get { return new PersistenceSpecification<T>(session, new DbTestEqualityComparer()); }
         }
     }
 }
