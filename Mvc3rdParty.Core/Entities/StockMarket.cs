@@ -15,5 +15,23 @@ namespace Mvc3rdParty.Core.Entities
         {
             StocksTraded = new List<Stock>();
         }
+
+        public virtual void AddTradedStock(Stock stock)
+        {
+            if (!StocksTraded.Contains(stock) && !stock.MarketsTradedOn.Contains(this))
+            {
+                stock.MarketsTradedOn.Add(this);
+                StocksTraded.Add(stock);
+            }
+        }
+
+        public virtual void DeleteTradedStock(Stock stock)
+        {
+            if (StocksTraded.Contains(stock) && stock.MarketsTradedOn.Contains(this))
+            {
+                stock.MarketsTradedOn.Remove(this);
+                StocksTraded.Remove(stock);
+            }
+        }
     }
 }

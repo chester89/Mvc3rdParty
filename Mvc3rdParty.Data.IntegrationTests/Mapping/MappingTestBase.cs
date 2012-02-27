@@ -13,7 +13,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
     public class MappingTestBase<T>: IDisposable where T: class
     {
         private readonly ISessionFactory sessionFactory;
-        private readonly ISession session;
+        protected readonly ISession Session;
         static Configuration configuration;
 
         static MappingTestBase()
@@ -24,30 +24,30 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         protected MappingTestBase()
         {
             sessionFactory = configuration.BuildSessionFactory();
-            session = sessionFactory.OpenSession();
+            Session = sessionFactory.OpenSession();
 
-            new SchemaExport(configuration).Execute(true, true, false, session.Connection, null);
+            new SchemaExport(configuration).Execute(true, true, false, Session.Connection, null);
         }
 
         static void Configure()
         {
             configuration = Fluently.Configure()
-                .Database(SQLiteConfiguration.Standard.InMemory().ShowSql())
+                .Database(SQLiteConfiguration.Standard.InMemory().ShowSql().FormatSql())
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<StockMap>()
                                    .Conventions.AddFromAssemblyOf<CustomIdConvention>()).BuildConfiguration();
         }
 
         public void Dispose()
         {
-            if (session.IsOpen)
+            if (Session.IsOpen)
             {
-                session.Close();
+                Session.Close();
             }
         }
 
         protected PersistenceSpecification<T> Specification
         {
-            get { return new PersistenceSpecification<T>(session, new DbTestEqualityComparer()); }
+            get { return new PersistenceSpecification<T>(Session, new DbTestEqualityComparer()); }
         }
     }
 }

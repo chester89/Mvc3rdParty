@@ -70,6 +70,7 @@
     <Compile Include="DbTestEqualityComparer.cs" />
     <Compile Include="Mapping\MappingTestBase.cs" />
     <Compile Include="Mapping\StockMapTests.cs" />
+    <Compile Include="Mapping\StockMarketMapTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

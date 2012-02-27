@@ -14,6 +14,7 @@ namespace Mvc3rdParty.Data.Mappings
             Id(x => x.Id);
             Map(x => x.Name);
             Map(x => x.Ticker);
+            HasManyToMany(x => x.MarketsTradedOn).Inverse();
         }
     }
 }

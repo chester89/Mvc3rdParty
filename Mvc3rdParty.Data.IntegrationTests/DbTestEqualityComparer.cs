@@ -12,15 +12,20 @@ namespace Mvc3rdParty.Data.IntegrationTests
             {
                 return false;
             }
-            Func<Type, bool> filter = type => !type.IsValueType && type != typeof (string);
-
-            if (new [] { x.GetType(), y.GetType() }.All(filter) && y.GetType().IsInstanceOfType(x))
+            
+            if (new [] { x.GetType(), y.GetType() }.All(IsReferenceToOtherEntityOrCollection) && y.GetType().IsInstanceOfType(x))
             {
                 dynamic X = x;
                 dynamic Y = y;
                 return X.Id == Y.Id;
             }
             return x.Equals(y);
+        }
+
+        //get all property types that are references to other entities or collections
+        private bool IsReferenceToOtherEntityOrCollection(Type propertyType)
+        {
+            return !propertyType.IsValueType && propertyType != typeof (string);
         }
 
         public int GetHashCode(object obj)
