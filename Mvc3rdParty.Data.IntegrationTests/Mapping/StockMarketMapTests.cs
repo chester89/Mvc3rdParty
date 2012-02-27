@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using FluentNHibernate.Testing;
 using Mvc3rdParty.Core.Entities;
+using Ploeh.AutoFixture;
 using Xunit;
 
 namespace Mvc3rdParty.Data.IntegrationTests.Mapping
@@ -13,9 +14,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         public void CanCorrectlyMapStockMarket()
         {
             Specification
-                .CheckProperty(sm => sm.Location, "New York")
-                .CheckList(sm => sm.StocksTraded, new List<Stock>())
-                .VerifyTheMappings();
+                .VerifyTheMappings(fixture.CreateAnonymous<StockMarket>());
         }
 
         [Fact]

@@ -7,6 +7,7 @@ using Mvc3rdParty.Data.Mappings;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using Ploeh.AutoFixture;
 
 namespace Mvc3rdParty.Data.IntegrationTests.Mapping
 {
@@ -14,6 +15,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
     {
         private readonly ISessionFactory sessionFactory;
         protected readonly ISession Session;
+        protected Fixture fixture;
         static Configuration configuration;
 
         static MappingTestBase()
@@ -25,6 +27,8 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         {
             sessionFactory = configuration.BuildSessionFactory();
             Session = sessionFactory.OpenSession();
+            fixture = new Fixture();
+            fixture.Customize(new MultipleCustomization());
 
             new SchemaExport(configuration).Execute(true, true, false, Session.Connection, null);
         }
