@@ -15,8 +15,9 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
     {
         private readonly ISessionFactory sessionFactory;
         protected readonly ISession Session;
-        protected Fixture fixture;
+        private readonly Fixture fixture;
         static Configuration configuration;
+        private readonly DbTestEqualityComparer equalityComparer = new DbTestEqualityComparer();
 
         static MappingTestBase()
         {
@@ -51,7 +52,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
 
         protected PersistenceSpecification<T> Specification
         {
-            get { return new PersistenceSpecification<T>(Session, new DbTestEqualityComparer()); }
+            get { return new PersistenceSpecification<T>(Session, equalityComparer); }
         }
     }
 }

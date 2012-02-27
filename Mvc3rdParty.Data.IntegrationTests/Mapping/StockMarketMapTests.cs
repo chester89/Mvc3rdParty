@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using FluentNHibernate.Testing;
 using Mvc3rdParty.Core.Entities;
@@ -14,7 +13,9 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         public void CanCorrectlyMapStockMarket()
         {
             Specification
-                .VerifyTheMappings(fixture.CreateAnonymous<StockMarket>());
+               .CheckProperty(sm => sm.Location, "New York")
+               .CheckList(sm => sm.StocksTraded, new List<Stock>())
+               .VerifyTheMappings();
         }
 
         [Fact]
