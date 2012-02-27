@@ -12,7 +12,8 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         {
             Specification
                 .CheckProperty(s => s.Name, "Facebook")
-                .CheckProperty(s => s.Ticker, "FB");
+                .CheckProperty(s => s.Ticker, "FB")
+                .VerifyTheMappings();
         }
     }
 
@@ -23,7 +24,8 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         {
             Specification
                 .CheckProperty(sm => sm.Location, "New York")
-                .CheckList(sm => sm.StocksTraded, new List<Stock>());
+                .CheckList(sm => sm.StocksTraded, new List<Stock>())
+                .VerifyTheMappings();
         }
     }
 }

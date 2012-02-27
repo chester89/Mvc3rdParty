@@ -19,20 +19,20 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         static MappingTestBase()
         {
             Configure();
-
-            new SchemaExport(configuration).Create(true, true);
         }
 
         protected MappingTestBase()
         {
             sessionFactory = configuration.BuildSessionFactory();
             session = sessionFactory.OpenSession();
+
+            new SchemaExport(configuration).Execute(true, true, false, session.Connection, null);
         }
 
         static void Configure()
         {
             configuration = Fluently.Configure()
-                .Database(SQLiteConfiguration.Standard)
+                .Database(SQLiteConfiguration.Standard.InMemory().ShowSql())
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<StockMap>()
                                    .Conventions.AddFromAssemblyOf<CustomIdConvention>()).BuildConfiguration();
         }
