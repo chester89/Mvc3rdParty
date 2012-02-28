@@ -7,7 +7,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
     public class StockMapTests: MappingTestBase<Stock>
     {
         [Fact]
-        public void CanCorrectlyMapStock()
+        public override void CanCorrectlyMapEntity()
         {
             Specification
                 .CheckProperty(s => s.Name, "Facebook")

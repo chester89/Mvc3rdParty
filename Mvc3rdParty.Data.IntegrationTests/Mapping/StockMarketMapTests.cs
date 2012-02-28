@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentNHibernate.Testing;
 using Mvc3rdParty.Core.Entities;
-using Ploeh.AutoFixture;
 using Xunit;
 
 namespace Mvc3rdParty.Data.IntegrationTests.Mapping
@@ -10,7 +9,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
     public class StockMarketMapTests: MappingTestBase<StockMarket>
     {
         [Fact]
-        public void CanCorrectlyMapStockMarket()
+        public override void  CanCorrectlyMapEntity()
         {
             Specification
                .CheckProperty(sm => sm.Location, "New York")
