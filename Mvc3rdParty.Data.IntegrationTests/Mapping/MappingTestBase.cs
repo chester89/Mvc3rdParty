@@ -15,7 +15,7 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
     {
         private readonly ISessionFactory sessionFactory;
         protected readonly ISession Session;
-        private readonly Fixture fixture;
+        protected readonly Fixture Fixture;
         static Configuration configuration;
         private readonly DbTestEqualityComparer equalityComparer = new DbTestEqualityComparer();
 
@@ -28,8 +28,8 @@ namespace Mvc3rdParty.Data.IntegrationTests.Mapping
         {
             sessionFactory = configuration.BuildSessionFactory();
             Session = sessionFactory.OpenSession();
-            fixture = new Fixture();
-            fixture.Customize(new MultipleCustomization());
+            Fixture = new Fixture();
+            Fixture.Customize(new MultipleCustomization());
 
             new SchemaExport(configuration).Execute(true, true, false, Session.Connection, null);
         }
