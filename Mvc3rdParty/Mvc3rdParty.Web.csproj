@@ -13,10 +13,11 @@
     <RootNamespace>Mvc3rdParty.Web</RootNamespace>
     <AssemblyName>Mvc3rdParty.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Mvc3rdParty\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <JSLintSkip>\Scripts\modernizr-1.7.min.js|\Scripts\modernizr-1.7.js|\Scripts\MicrosoftMvcValidation.js|\Scripts\MicrosoftMvcValidation.debug.js|\Scripts\MicrosoftMvcAjax.js|\Scripts\MicrosoftMvcAjax.debug.js|\Scripts\MicrosoftAjax.js|\Scripts\MicrosoftAjax.debug.js|\Scripts\jquery.validate.unobtrusive.min.js|\Scripts\jquery.validate.unobtrusive.js|\Scripts\jquery.validate.min.js|\Scripts\jquery.validate.js|\Scripts\jquery.validate-vsdoc.js|\Scripts\jquery.unobtrusive-ajax.min.js|\Scripts\jquery.unobtrusive-ajax.js|\Scripts\jquery-ui-1.8.11.min.js|\Scripts\jquery-ui-1.8.11.js|\Scripts\jquery-1.5.1.min.js|\Scripts\jquery-1.5.1.js|\Scripts\jquery-1.5.1-vsdoc.js</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

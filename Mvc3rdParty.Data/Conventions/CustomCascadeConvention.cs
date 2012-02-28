@@ -7,6 +7,7 @@ namespace Mvc3rdParty.Data.Conventions {
         public void Apply(IOneToManyCollectionInstance instance) 
         {
             instance.Cascade.SaveUpdate();
+            instance.LazyLoad();
         }
     }
 
@@ -15,6 +16,7 @@ namespace Mvc3rdParty.Data.Conventions {
         public void Apply(IManyToManyCollectionInstance instance)
         {
             instance.Cascade.All();
+            instance.LazyLoad();
         }
     }
 }
