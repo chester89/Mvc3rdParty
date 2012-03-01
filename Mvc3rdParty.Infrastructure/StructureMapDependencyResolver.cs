@@ -31,7 +31,7 @@ namespace Mvc3rdParty.Infrastructure
             return container.GetAllInstances<object>().Where(s => s.GetType() == serviceType);
         }
 
-        public void DisposeofHttpCachedObjects()
+        public void DisposeOfHttpCachedObjects()
         {
             HttpContextLifecycle.DisposeAndClearAll();
         }

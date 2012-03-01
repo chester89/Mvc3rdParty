@@ -14,7 +14,7 @@ namespace Mvc3rdParty.Data.Foundation
 
         static NhRepositoryBase()
         {
-            autoCreateDb = true;
+            autoCreateDb = false;
 
             if (autoCreateDb)
             {

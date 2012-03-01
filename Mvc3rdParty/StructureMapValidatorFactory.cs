@@ -16,6 +16,7 @@ namespace Mvc3rdParty.Infrastructure
             container = new Container(cfg => cfg.Scan(sc =>
                                                           {
                                                               sc.TheCallingAssembly();
+                                                              sc.AssembliesFromApplicationBaseDirectory();
                                                               sc.WithDefaultConventions();
                                                               sc.LookForRegistries();
                                                           }));
@@ -23,7 +24,8 @@ namespace Mvc3rdParty.Infrastructure
 
         public override IValidator CreateInstance(Type validatorType)
         {
-            return container.TryGetInstance(validatorType) as IValidator;
+            var validator = container.TryGetInstance(validatorType) as IValidator;
+            return validator;
         }
     }
 }

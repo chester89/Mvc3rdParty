@@ -27,5 +27,21 @@ namespace Mvc3rdParty.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View(new LoginModel());
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
