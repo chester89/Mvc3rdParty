@@ -22,7 +22,6 @@ namespace Mvc3rdParty.Web
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Login", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()
@@ -35,14 +34,17 @@ namespace Mvc3rdParty.Web
 
             FluentValidationModelValidatorProvider.Configure(cfg =>
                                                                  {
-                                                                     cfg.ValidatorFactory = new StructureMapValidatorFactory();
+                                                                     cfg.ValidatorFactory = new StructureMapValidatorFactory(new FluentValidationRegistry());
                                                                  });
         }
 
         protected void Application_EndRequest()
         {
             dynamic resolver = DependencyResolver.Current;
-            resolver.DisposeOfHttpCachedObjects();
+            if (resolver is StructureMapDependencyResolver)
+            {
+                resolver.DisposeOfHttpCachedObjects();
+            }
         }
     }
 }
