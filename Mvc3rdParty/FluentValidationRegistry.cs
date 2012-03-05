@@ -1,8 +1,7 @@
-﻿using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
 using StructureMap.Configuration.DSL;
 
-namespace Mvc3rdParty.Infrastructure
+namespace Mvc3rdParty.Web
 {
     public class FluentValidationRegistry: Registry
     {
