@@ -11,13 +11,21 @@
 {
     Html.EnableClientValidation();
     <div>
+        <p>Username:</p>
         @Html.EditorFor(x => x.UserName)
         @Html.ValidationMessageFor(x => x.UserName)
     </div>
     
     <div>
+        <p>Password:</p>
         @Html.PasswordFor(x => x.Password)
         @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    
+    <div>
+        <p>Date:</p>
+        @Html.EditorFor(x => x.Edited)
+        @Html.ValidationMessageFor(x => x.Edited)
     </div>
 
     <input type="submit" value="Login"/>
